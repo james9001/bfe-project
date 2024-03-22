@@ -1,0 +1,26 @@
+---
+version: '3.7'
+
+services:
+
+  bfe-backend:
+    image: bfe-backend:latest
+    container_name: bfe-backend
+    restart: unless-stopped
+    ports:
+      - 7000:7000
+    volumes:
+      - ./localdev/conf/rclone.conf:/conf/rclone.conf
+      - ./localdev/bfetmp:/bfetmp
+      - ./localdev/data:/data
+      # start preservation targets
+      - ./localdev/testdata/MyOldPictures:/testdata/MyOldPictures
+      - ./localdev/testdata/MyReallyOldPictures:/testdata/MyReallyOldPictures
+      # end preservation targets
+
+  bfe-frontend:
+    image: bfe-frontend:latest
+    container_name: bfe-frontend
+    restart: unless-stopped
+    ports:
+      - 7002:80
