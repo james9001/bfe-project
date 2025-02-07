@@ -16,6 +16,7 @@ services:
       # start preservation targets
       - ./localdev/testdata/MyOldPictures:/testdata/MyOldPictures
       - ./localdev/testdata/MyReallyOldPictures:/testdata/MyReallyOldPictures
+      - ./localdev/testdata/MyReallyOldPictures:/secondmountpath/MyOtherCopyOfReallyOldPictures
       # end preservation targets
 
   bfe-frontend:
