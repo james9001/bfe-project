@@ -8,7 +8,7 @@ services:
     container_name: bfe-backend
     restart: unless-stopped
     ports:
-      - 7000:7000
+      - 7009:7000
     volumes:
       - ./localdev/conf/rclone.conf:/conf/rclone.conf
       - ./localdev/bfetmp:/bfetmp
@@ -24,3 +24,6 @@ services:
     restart: unless-stopped
     ports:
       - 7002:80
+    environment:
+      - BFE_ENV_PRODUCTION=true
+      - BFE_ENV_BFE_BACKEND_BASE_URL=http://localhost:7009
